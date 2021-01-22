@@ -16,7 +16,7 @@ Repository adalah hasil percobaan penulis dalam belajar Golang yang mana menggun
 
 ![clean](images/clean.jpg "clean")
 
-![flow](images/flow.png"flow")
+![flow](images/flow.png "flow")
 
 
 
