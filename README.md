@@ -14,7 +14,7 @@ Repository adalah hasil percobaan penulis dalam belajar Golang yang mana menggun
 2. Service
 3. Handler
 
-![clean](D:/GO/workspace/src/github.com/teten-nugraha/golang-crud/images/clean.jpg "clean")
+![clean](images/clean.jpg "clean")
 
 ## Technologies
 
