@@ -16,6 +16,10 @@ Repository adalah hasil percobaan penulis dalam belajar Golang yang mana menggun
 
 ![clean](images/clean.jpg "clean")
 
+![flow](images/flow.png"flow")
+
+
+
 ## Technologies
 
 Project ini menggunakan beberapa teknologi yaitu :
