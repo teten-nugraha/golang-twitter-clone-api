@@ -4,6 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
+	"github.com/teten-nugraha/golang-twitter-clone-api/domain"
 	"os"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
@@ -23,14 +24,16 @@ func InitDB() *gorm.DB {
 		panic(err)
 	}
 
-	//migrateDDL(db)
+	migrateDDL(db)
 
 	return db
 }
 
-//func migrateDDL(db *gorm.DB) {
-//	db.AutoMigrate(&domain.User{})
-//}
+func migrateDDL(db *gorm.DB) {
+	db.AutoMigrate(domain.User{})
+	db.AutoMigrate(domain.Tweet{})
+	db.AutoMigrate(domain.TweetConversation{})
+}
 
 func getENV() {
 	err := godotenv.Load(".env")
