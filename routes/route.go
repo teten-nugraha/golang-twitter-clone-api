@@ -13,6 +13,7 @@ func Init() *echo.Echo {
 
 	db2.AutoMigrate(domain.User{})
 	db2.AutoMigrate(domain.Tweet{})
+	db2.AutoMigrate(domain.TweetConversation{})
 
 	routes := echo.New()
 	routes.GET("/", func(c echo.Context) error {
