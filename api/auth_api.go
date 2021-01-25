@@ -1,6 +1,7 @@
 package api
 
 import (
+	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo/v4"
 	"github.com/teten-nugraha/golang-twitter-clone-api/dto"
 	"github.com/teten-nugraha/golang-twitter-clone-api/service"
@@ -69,5 +70,15 @@ func(p *AuthApi) CheckLogin(c echo.Context) error {
 
 	return SuccessResponse(c, http.StatusOK, map[string]string{
 		"token": token,
+	})
+}
+
+func (p *AuthApi) WhoAmI(c echo.Context) error {
+	user := c.Get("user").(*jwt.Token)
+	claims := user.Claims.(jwt.MapClaims)
+	username := claims["username"].(string)
+
+	return SuccessResponse(c, http.StatusOK, map[string]string{
+		"data": "Your login as " + username,
 	})
 }

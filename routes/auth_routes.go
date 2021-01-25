@@ -13,6 +13,7 @@ func AuthRoute(routes *echo.Echo, authAPI api.AuthApi) {
 		auth.GET("/generate-hash/:password", authAPI.GenerateHashPassword)
 		auth.POST("/signup", authAPI.SignUp)
 		auth.POST("/login", authAPI.CheckLogin)
+		auth.GET("/whoAmI", authAPI.WhoAmI, IsAuthenticated)
 	}
 
 }

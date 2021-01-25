@@ -38,8 +38,14 @@ func Init() *echo.Echo {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 
+
 	AuthRoute(routes, authApi)
 	UserRoute(routes, userApi)
 
 	return routes
 }
+
+// auth middleware
+var IsAuthenticated = middleware.JWTWithConfig(middleware.JWTConfig{
+	SigningKey: []byte(util.SECRET),
+})

@@ -87,13 +87,13 @@ func (u *UserService) GenerateToken(user domain.User) (string, error) {
 	token := jwt.New(jwt.SigningMethodHS256)
 
 	claims := token.Claims.(jwt.MapClaims)
+	claims["id"] = user.ID
 	claims["username"] = user.Username
 	claims["email"] = user.Email
-	claims["level"] = "application"
 	claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
 
 	t, err := token.SignedString([]byte(util.SECRET))
 
-	return t, err
+	return util.BEARER + t, err
 
 }
