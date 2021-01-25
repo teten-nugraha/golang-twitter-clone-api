@@ -44,3 +44,22 @@ func (p *AuthApi) SignUp(c echo.Context) error {
 
 	return SuccessResponse(c, http.StatusOK, userDto)
 }
+
+func(p *AuthApi) CheckLogin(c echo.Context) error {
+	form := new(dto.LoginDto)
+	c.Bind(form)
+
+	username := form.Username
+	password := form.Password
+
+	user, err := p.UserService.CheckLogin(username, password)
+	if err != nil {
+		return ErrorResponse(c, http.StatusBadRequest, err.Error())
+	}
+
+	token, _ := p.UserService.GenerateToken(user)
+
+	return SuccessResponse(c, http.StatusOK, map[string]string{
+		"token": token,
+	})
+}
