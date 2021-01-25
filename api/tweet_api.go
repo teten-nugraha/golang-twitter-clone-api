@@ -43,3 +43,13 @@ func (t *TweetApi) SaveTweet(c echo.Context) error {
 
 	return SuccessResponse(c, http.StatusOK, tweetDto)
 }
+
+func (t *TweetApi) TimeLine(c echo.Context) error {
+	tweets := t.TweetService.Timeline()
+
+	//if(len(tweets) > 0) {
+	//	return SuccessResponse(c, http.StatusOK, tweets)
+	//}
+
+	return SuccessResponse(c, http.StatusOK, tweets)
+}

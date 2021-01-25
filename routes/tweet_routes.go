@@ -9,6 +9,7 @@ func TweetRoute(routes *echo.Echo, tweetApi api.TweetApi) {
 	tweet := routes.Group("/tweet", IsAuthenticated)
 	{
 		tweet.POST("/save", tweetApi.SaveTweet)
+		tweet.GET("/timelines", tweetApi.TimeLine)
 	}
 
 }

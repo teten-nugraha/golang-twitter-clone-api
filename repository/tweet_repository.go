@@ -8,6 +8,7 @@ import (
 
 type TweetRepositoryContract interface {
 	SaveTweet(newTweet domain.Tweet) (domain.Tweet, error)
+	Timeline() []domain.Tweet
 }
 
 type TweetRepository struct {
@@ -29,4 +30,13 @@ func (t *TweetRepository) SaveTweet(newTweet domain.Tweet) (domain.Tweet, error)
 
 	logrus.Info("success save new tweet")
 	return newTweet, nil
+}
+
+func (t *TweetRepository) Timeline() []domain.Tweet {
+	var tweets []domain.Tweet
+
+	t.DB.Order("id desc").Find(&tweets)
+
+	return tweets
+
 }

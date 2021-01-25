@@ -15,7 +15,20 @@ func NewTweetDtoToEntity(newTweet dto.NewTweetDto) domain.Tweet {
 func EntityToTweetDto(entity domain.Tweet) dto.TweetDto {
 	return dto.TweetDto{
 		ID: entity.ID,
+		Tweet: entity.Tweet,
 		Maker: entity.UserRefer,
+		LikeCount: entity.LikeCount,
+		CommentCount: entity.CommentCount,
 		CreatedAt: entity.CreatedAt,
 	}
+}
+
+func EntityToTweetDtoList(entities []domain.Tweet) []dto.TweetDto {
+	tweetDtoList := make([]dto.TweetDto, len(entities))
+
+	for i, itm := range  entities {
+		tweetDtoList[i] = EntityToTweetDto(itm)
+	}
+
+	return tweetDtoList
 }

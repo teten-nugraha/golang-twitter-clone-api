@@ -8,7 +8,10 @@ type NewTweetDto struct {
 }
 
 type TweetDto struct {
-	ID        uint64
-	Maker     string
-	CreatedAt time.Time
+	ID           uint64
+	Tweet 		 string
+	Maker        string
+	LikeCount    int
+	CommentCount int
+	CreatedAt    time.Time
 }

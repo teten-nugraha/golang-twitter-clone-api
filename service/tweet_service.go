@@ -9,6 +9,7 @@ import (
 
 type TweetServiceContract interface {
 	SaveTweet(newTweetDto dto.NewTweetDto, maker uint) (dto.TweetDto, error)
+	Timeline() []dto.TweetDto
 }
 
 type TweetService struct {
@@ -39,4 +40,8 @@ func (t *TweetService) SaveTweet(newTweetDto dto.NewTweetDto) (dto.TweetDto, err
 
 	return tweetDto, nil
 
+}
+
+func (t *TweetService) Timeline() []dto.TweetDto {
+	return mapper.EntityToTweetDtoList(t.TweetRepository.Timeline())
 }
