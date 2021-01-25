@@ -10,12 +10,18 @@ import (
 	"net/http"
 )
 
+// auth middleware
+var IsAuthenticated = middleware.JWTWithConfig(middleware.JWTConfig{
+	SigningKey: []byte(util.SECRET),
+})
+
 func Init() *echo.Echo {
 	db2 := db.InitDB()
 	//defer db2.Close()
 
 	authApi := injection.InitAuthAPI(db2)
 	userApi := injection.InitUserApi(db2)
+	tweetApi := injection.InitTweetAPI(db2)
 
 	routes := echo.New()
 
@@ -41,11 +47,8 @@ func Init() *echo.Echo {
 
 	AuthRoute(routes, authApi)
 	UserRoute(routes, userApi)
+	TweetRoute(routes, tweetApi)
 
 	return routes
 }
 
-// auth middleware
-var IsAuthenticated = middleware.JWTWithConfig(middleware.JWTConfig{
-	SigningKey: []byte(util.SECRET),
-})

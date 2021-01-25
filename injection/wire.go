@@ -19,3 +19,9 @@ func initAuthAPI(db *gorm.DB) api.AuthApi {
 
 	return api.AuthApi{}
 }
+
+func initTweetAPI(db *gorm.DB) api.TweetApi {
+	wire.Build(repository.ProviderTweetRepository, service.ProviderTweetService, api.ProviderTweetApi)
+
+	return api.TweetApi{}
+}

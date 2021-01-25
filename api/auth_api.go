@@ -74,6 +74,7 @@ func(p *AuthApi) CheckLogin(c echo.Context) error {
 }
 
 func (p *AuthApi) WhoAmI(c echo.Context) error {
+
 	user := c.Get("user").(*jwt.Token)
 	claims := user.Claims.(jwt.MapClaims)
 	username := claims["username"].(string)

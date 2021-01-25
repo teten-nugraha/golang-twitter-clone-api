@@ -27,3 +27,10 @@ func InitAuthAPI(db *gorm.DB) api.AuthApi {
 	authApi := api.ProviderAuthApi(userService)
 	return authApi
 }
+
+func InitTweetAPI(db *gorm.DB) api.TweetApi {
+	tweetRepository := repository.ProviderTweetRepository(db)
+	tweetService := service.ProviderTweetService(tweetRepository)
+	tweetApi := api.ProviderTweetApi(tweetService)
+	return tweetApi
+}
