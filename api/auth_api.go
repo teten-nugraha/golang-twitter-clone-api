@@ -29,7 +29,10 @@ func (p *AuthApi) GenerateHashPassword(c echo.Context) error {
 
 func (p *AuthApi) SignUp(c echo.Context) error {
 	form := new(dto.SignupDto)
-	c.Bind(form)
+	if err := c.Bind(form); err != nil {
+		return ErrorResponse(c, http.StatusBadRequest, err.Error())
+	}
+
 
 	if err := c.Validate(form); err != nil {
 		return ErrorResponse(c, http.StatusBadRequest, err.Error())

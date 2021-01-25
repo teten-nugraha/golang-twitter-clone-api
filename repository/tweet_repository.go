@@ -37,6 +37,8 @@ func (t *TweetRepository) Timeline() []domain.Tweet {
 
 	t.DB.Order("id desc").Find(&tweets)
 
+	logrus.Info("Success get tweets")
+
 	return tweets
 
 }
