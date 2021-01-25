@@ -30,6 +30,10 @@ func (p *AuthApi) SignUp(c echo.Context) error {
 	form := new(dto.SignupDto)
 	c.Bind(form)
 
+	if err := c.Validate(form); err != nil {
+		return ErrorResponse(c, http.StatusBadRequest, err.Error())
+	}
+
 	signupDto := dto.SignupDto{
 		Username: form.Username,
 		Email:    form.Email,
@@ -48,6 +52,10 @@ func (p *AuthApi) SignUp(c echo.Context) error {
 func(p *AuthApi) CheckLogin(c echo.Context) error {
 	form := new(dto.LoginDto)
 	c.Bind(form)
+
+	if err := c.Validate(form); err != nil {
+		return ErrorResponse(c, http.StatusBadRequest, err.Error())
+	}
 
 	username := form.Username
 	password := form.Password

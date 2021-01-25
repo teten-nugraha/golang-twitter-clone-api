@@ -66,6 +66,7 @@ func(u *UserService) SignUp(signUpDto dto.SignupDto) (dto.UserDto, error) {
 }
 
 func (u *UserService) CheckLogin(username, password string) (domain.User, error) {
+
 	user, err := u.UserRepository.FindByUsername(username)
 
 	if err != nil {
