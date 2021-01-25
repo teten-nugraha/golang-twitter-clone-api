@@ -11,6 +11,7 @@ func Init() *echo.Echo {
 	db2 := db.InitDB()
 	//defer db2.Close()
 
+	authApi := injection.InitAuthAPI(db2)
 	userApi := injection.InitUserApi(db2)
 
 	routes := echo.New()
@@ -18,6 +19,7 @@ func Init() *echo.Echo {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 
+	AuthRoute(routes, authApi)
 	UserRoute(routes, userApi)
 
 	return routes

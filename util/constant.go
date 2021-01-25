@@ -1,3 +1,5 @@
 package util
 
-var PORT = ":9090"
+const PORT = ":9090"
+
+const SECRET string = "S3CR3TS3K4L1"

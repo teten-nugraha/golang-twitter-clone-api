@@ -13,3 +13,19 @@ func ToUserDto(user domain.User) dto.UserDto {
 		Gender: user.Gender,
 	}
 }
+
+func ToUserEntity(dto dto.UserDto) domain.User {
+	return domain.User{
+		Username: dto.Username,
+		Email: dto.Email,
+		Gender: dto.Gender,
+	}
+}
+
+func SignupDtoToEntity(dto dto.SignupDto) domain.User {
+	return domain.User{
+		Username: dto.Username,
+		Email: dto.Email,
+		Gender: dto.Gender,
+	}
+}
