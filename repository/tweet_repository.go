@@ -2,6 +2,7 @@ package repository
 
 import (
 	"github.com/jinzhu/gorm"
+	"github.com/sirupsen/logrus"
 	"github.com/teten-nugraha/golang-twitter-clone-api/domain"
 )
 
@@ -23,7 +24,9 @@ func ProviderTweetRepository(DB *gorm.DB) TweetRepository {
 func (t *TweetRepository) SaveTweet(newTweet domain.Tweet) (domain.Tweet, error) {
 	if err := t.DB.Create(&newTweet).Error; err != nil {
 		return newTweet, err
+		logrus.Warn("failed save new tweet")
 	}
 
+	logrus.Info("success save new tweet")
 	return newTweet, nil
 }

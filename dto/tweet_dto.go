@@ -4,7 +4,7 @@ import "time"
 
 type NewTweetDto struct {
 	Tweet string `json:"tweet" validate:"required"`
-	Maker uint
+	Maker string
 }
 
 type TweetDto struct {

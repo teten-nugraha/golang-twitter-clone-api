@@ -15,7 +15,7 @@ func NewTweetDtoToEntity(newTweet dto.NewTweetDto) domain.Tweet {
 func EntityToTweetDto(entity domain.Tweet) dto.TweetDto {
 	return dto.TweetDto{
 		ID: entity.ID,
-		Maker: "Test",
+		Maker: entity.UserRefer,
 		CreatedAt: entity.CreatedAt,
 	}
 }
