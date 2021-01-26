@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "09ae8adc-db2e-48d4-9f95-c9d6843db496",
+		"name": "Golang Twitter Clone API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "localhost:9090/auth/signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"wer\",\r\n    \"password\":\"123\",\r\n    \"gender\":\"F\",\r\n    \"email\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/auth/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:9090/auth/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "teten",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:9090/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:9090/auth/whoAmI",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRldGVuQG1haWwuY29tIiwiZXhwIjoxNjExODEwNTgzLCJpZCI6NiwidXNlcm5hbWUiOiJ0ZXRlbiJ9.0cn--PTkp860PUlZ0KwD8ir2qJb8QLOEAwQ8t6xtdH0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:9090/auth/whoAmI",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"auth",
+								"whoAmI"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TWEET",
+			"item": [
+				{
+					"name": "localhost:9090/tweet/save",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRldGVuQG1haWwuY29tIiwiZXhwIjoxNjExODE3NzExLCJpZCI6NiwidXNlcm5hbWUiOiJ0ZXRlbiJ9.K5HLLozPVeditGtork4tQCND5KPPExQJVhBPVBf_X-k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "tweet",
+									"value": "mobil pertamaku",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:9090/tweet/save",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"tweet",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:9090/tweet/timelines",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRldGVuQG1haWwuY29tIiwiZXhwIjoxNjExODE3NzExLCJpZCI6NiwidXNlcm5hbWUiOiJ0ZXRlbiJ9.K5HLLozPVeditGtork4tQCND5KPPExQJVhBPVBf_X-k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "tweet",
+									"value": "mobil pertamaku",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:9090/tweet/timelines",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"tweet",
+								"timelines"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "COMMENT",
+			"item": [
+				{
+					"name": "localhost:9090/comment/save",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRldGVuQG1haWwuY29tIiwiZXhwIjoxNjExODg4NzA2LCJ1c2VybmFtZSI6InRldGVuIn0.f1qdw2TJtROzUPQR-PhTZCKaSi7wdgy9leJL5tPP6I4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tweet_id\":1,\r\n    \"reply\":\"ayoo dimana\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/comment/save",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"comment",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:9090/comment/findAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRldGVuQG1haWwuY29tIiwiZXhwIjoxNjExODg4NzA2LCJ1c2VybmFtZSI6InRldGVuIn0.f1qdw2TJtROzUPQR-PhTZCKaSi7wdgy9leJL5tPP6I4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/comment/findAll/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"comment",
+								"findAll",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
