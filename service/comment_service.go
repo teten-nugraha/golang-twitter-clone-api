@@ -8,6 +8,7 @@ import (
 
 type CommentServiceContract interface {
 	SaveComment(newCommentDto dto.CommentDto) (dto.CommentDto, error)
+	Comments(tweetId uint64) []dto.CommentDto
 }
 
 type CommentService struct {
@@ -34,4 +35,13 @@ func (c *CommentService) SaveComment(newCommentDto dto.CommentDto) (dto.CommentD
 
 	return newCommentDto, nil
 
+}
+
+func (c *CommentService) Comments(tweetId uint64) []dto.CommentDto {
+
+	comments := c.CommentRepository.Comments(tweetId)
+
+	commentDtos := mapper.CommentEntityToDtoList(comments)
+
+	return commentDtos
 }

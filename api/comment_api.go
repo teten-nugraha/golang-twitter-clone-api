@@ -6,6 +6,7 @@ import (
 	"github.com/teten-nugraha/golang-twitter-clone-api/service"
 	"github.com/teten-nugraha/golang-twitter-clone-api/util"
 	"net/http"
+	"strconv"
 )
 
 type CommentApi struct {
@@ -42,4 +43,15 @@ func (c *CommentApi) SaveComment(e echo.Context) error {
 	}
 
 	return SuccessResponse(e, http.StatusOK, commentDto)
+}
+
+func (c *CommentApi) Comments(e echo.Context) error {
+	tweet_id, err := strconv.ParseUint(string(e.Param("tweet_id")), 10, 64)
+	if err != nil {
+		return ErrorResponse(e, http.StatusBadRequest, err.Error())
+	}
+
+	commentsDtos := c.CommentService.Comments(tweet_id)
+
+	return SuccessResponse(e, http.StatusOK, commentsDtos)
 }

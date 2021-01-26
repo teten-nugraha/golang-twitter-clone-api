@@ -8,6 +8,7 @@ import (
 
 type CommentRepositoryContract interface {
 	SaveComment(newComment domain.Comment) (domain.Comment, error)
+	Comments(tweetId uint64) []domain.Comment
 }
 
 type CommentRepository struct {
@@ -29,4 +30,14 @@ func (c *CommentRepository) SaveComment(newComment domain.Comment) (domain.Comme
 
 	logrus.Info("Success save new comment")
 	return newComment, nil
+}
+
+func (c *CommentRepository) Comments(tweetId uint64) []domain.Comment {
+	var comments []domain.Comment
+
+	c.DB.Where("tweet_id = ?", tweetId).Order("id desc").Find(&comments)
+
+	logrus.Info("Success get comments")
+
+	return comments
 }
