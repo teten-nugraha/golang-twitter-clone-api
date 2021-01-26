@@ -22,9 +22,9 @@ func Init() *echo.Echo {
 	authApi := injection.InitAuthAPI(db2)
 	userApi := injection.InitUserApi(db2)
 	tweetApi := injection.InitTweetAPI(db2)
+	commentApi := injection.InitCommentAPI(db2)
 
 	routes := echo.New()
-
 
 	// Gzip Compression
 	routes.Use(middleware.GzipWithConfig(middleware.GzipConfig{
@@ -44,11 +44,10 @@ func Init() *echo.Echo {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 
-
 	AuthRoute(routes, authApi)
 	UserRoute(routes, userApi)
 	TweetRoute(routes, tweetApi)
+	CommentRoute(routes, commentApi)
 
 	return routes
 }
-
