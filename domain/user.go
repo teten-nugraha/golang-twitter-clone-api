@@ -7,5 +7,4 @@ type User struct {
 	Gender             string              `gorm:"type:varchar(255);NOT NULL" json:"gender" binding:"required"`
 	Password           string              `gorm:"type:varchar(255);NOT NULL" json:"password" binding:"required"`
 	Tweets             []Tweet             `gorm:"foreignKey:UserRefer"`
-	TweetConversations []TweetConversation `gorm:"foreignKey:UserRefer"`
 }

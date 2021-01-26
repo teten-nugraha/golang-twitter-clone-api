@@ -32,7 +32,7 @@ func InitDB() *gorm.DB {
 func migrateDDL(db *gorm.DB) {
 	db.AutoMigrate(domain.User{})
 	db.AutoMigrate(domain.Tweet{})
-	db.AutoMigrate(domain.TweetConversation{})
+	db.AutoMigrate(domain.Comment{})
 }
 
 func getENV() {

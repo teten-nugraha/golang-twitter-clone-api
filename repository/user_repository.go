@@ -2,6 +2,7 @@ package repository
 
 import (
 	"github.com/jinzhu/gorm"
+	"github.com/sirupsen/logrus"
 	"github.com/teten-nugraha/golang-twitter-clone-api/domain"
 )
 
@@ -35,6 +36,8 @@ func (u *UserRepository) SaveOrUpdate(user domain.User) (domain.User, error) {
 	if err := u.DB.Create(&user).Error; err != nil {
 		return user, err
 	}
+
+	logrus.Info("Success saved new update data user")
 
 	return user, nil
 }
