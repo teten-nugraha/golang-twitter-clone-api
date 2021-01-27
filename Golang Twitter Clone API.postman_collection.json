@@ -9,7 +9,7 @@
 			"name": "AUTH",
 			"item": [
 				{
-					"name": "localhost:9090/auth/signup",
+					"name": "SIGNUP",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -37,7 +37,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:9090/auth/login",
+					"name": "LOGIN",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -71,7 +71,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:9090/auth/whoAmI",
+					"name": "whoami",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -80,8 +80,8 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRldGVuQG1haWwuY29tIiwiZXhwIjoxNjExODEwNTgzLCJpZCI6NiwidXNlcm5hbWUiOiJ0ZXRlbiJ9.0cn--PTkp860PUlZ0KwD8ir2qJb8QLOEAwQ8t6xtdH0",
-								"type": "text"
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRldGVuQG1haWwuY29tIiwiZXhwIjoxNjExODEwNTgzLCJpZCI6NiwidXNlcm5hbWUiOiJ0ZXRlbiJ9.0cn--PTkp860PUlZ0KwD8ir2qJb8QLOEAwQ8t6xtdH0"
 							}
 						],
 						"url": {
@@ -190,7 +190,7 @@
 			"name": "COMMENT",
 			"item": [
 				{
-					"name": "localhost:9090/comment/save",
+					"name": "post comment",
 					"request": {
 						"method": "POST",
 						"header": [
