@@ -9,6 +9,7 @@ import (
 type TweetRepositoryContract interface {
 	SaveTweet(newTweet domain.Tweet) (domain.Tweet, error)
 	Timeline() []domain.Tweet
+	UpdateComment(idTweet uint64) (error)
 }
 
 type TweetRepository struct {
@@ -41,4 +42,16 @@ func (t *TweetRepository) Timeline() []domain.Tweet {
 
 	return tweets
 
+}
+
+func (t *TweetRepository) UpdateComment(idTweet uint64) (error) {
+	var tweet domain.Tweet
+
+	t.DB.Where("id = ?", idTweet).First(&tweet)
+
+	tweet.CommentCount += 1
+
+	t.DB.Model(&tweet).Where("id = ?", idTweet).Update("comment_count", tweet.CommentCount)
+
+	return nil
 }

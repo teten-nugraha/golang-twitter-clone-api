@@ -13,11 +13,13 @@ type CommentServiceContract interface {
 
 type CommentService struct {
 	CommentRepository repository.CommentRepository
+	TweetRepository repository.TweetRepository
 }
 
-func ProviderCommentService(c repository.CommentRepository) CommentService {
+func ProviderCommentService(c repository.CommentRepository, t repository.TweetRepository) CommentService {
 	return CommentService{
 		CommentRepository: c,
+		TweetRepository: t,
 	}
 }
 
@@ -29,6 +31,12 @@ func (c *CommentService) SaveComment(newCommentDto dto.CommentDto) (dto.CommentD
 	newComment, err := c.CommentRepository.SaveComment(newComment)
 	if err != nil {
 		return dto.CommentDto{}, err
+	}
+
+	tweet_id := newComment.TweetId
+	err = c.TweetRepository.UpdateComment(tweet_id)
+	if err != nil {
+		return dto.CommentDto{}, nil
 	}
 
 	newCommentDto = mapper.CommentEntityToDto(newComment)

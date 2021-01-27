@@ -27,7 +27,7 @@ func initTweetAPI(db *gorm.DB) api.TweetApi {
 }
 
 func initCommentAPI(db *gorm.DB) api.CommentApi {
-	wire.Build(repository.ProviderCommentRepository, service.ProviderCommentService, api.ProviderCommentApi)
+	wire.Build(repository.ProviderCommentRepository,repository.ProviderTweetRepository, service.ProviderCommentService, api.ProviderCommentApi)
 
 	return api.CommentApi{}
 }
